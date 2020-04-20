@@ -18,13 +18,13 @@ function App() {
           <Redirect to="/news"></Redirect>
           <ul>
             <li>
-              <Link to="/">首页</Link>
-            </li>
-            <li>
               <Link to="/home">home</Link>
             </li>
             <li>
               <Link to="/news">news</Link>
+            </li>
+            <li>
+              <Link to="/HookDemo">hook</Link>
             </li>
           </ul>
           {/* <Routes></Routes> */}

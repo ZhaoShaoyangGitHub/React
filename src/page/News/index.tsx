@@ -1,7 +1,7 @@
 import React from "react";
 
-function Home() {
+function News() {
   return <div>我是列表页</div>;
 }
 
-export default Home;
+export default News;
