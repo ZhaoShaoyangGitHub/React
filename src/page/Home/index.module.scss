@@ -1,0 +1,38 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+}
+.home_layout {
+  height: calc(100vh - 64px);
+}
+
+.logo {
+  width: 150px;
+  height: 64px;
+  float: left;
+  img {
+    height: 50px;
+    pointer-events: none;
+    margin: 7px auto;
+  }
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
