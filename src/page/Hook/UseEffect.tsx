@@ -12,6 +12,9 @@ function Test2() {
       console.log("我走了");
     };
   }, []); // [], [count], [count,age]
+  useEffect(() => {
+    console.log("我又来了！！");
+  });
   return (
     <Row style={{ paddingTop: "30px" }}>
       <Col span={3}>

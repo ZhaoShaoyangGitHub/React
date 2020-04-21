@@ -6,6 +6,7 @@ import logo from "@/assets/images/logo.svg";
 import styles from "./index.module.scss";
 import Tex1 from "../Hook/UseState";
 import Tex2 from "../Hook/UseEffect";
+import Tex3 from "../Hook/UseContext";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -74,6 +75,11 @@ class Home extends React.Component {
                       <Button type="link"> HOOK: useEffect</Button>
                     </Link>
                   </Col>
+                  <Col span={4}>
+                    <Link to="/home/useContext">
+                      <Button type="link"> HOOK: useEffect</Button>
+                    </Link>
+                  </Col>
                 </Row>
                 <Switch>
                   <Route exact path="/home/useState">
@@ -81,6 +87,9 @@ class Home extends React.Component {
                   </Route>
                   <Route exact path="/home/useEffect">
                     <Tex2 />
+                  </Route>
+                  <Route exact path="/home/useContext">
+                    <Tex3 />
                   </Route>
                 </Switch>
               </Content>
