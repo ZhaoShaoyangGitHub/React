@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       {/* 重定向 */}
-      <Redirect to="/home"></Redirect>
+      <Redirect to="/todoList"></Redirect>
       {/* <Routes></Routes> */}
       <Route path="" component={Routes} />
     </Router>
