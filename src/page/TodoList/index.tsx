@@ -1,6 +1,12 @@
 import React, { Component } from "react";
-import { Input, Button, List } from "antd";
-import { TodoListStore } from "@/store/index";
+import { Store } from "@/store/index";
+import {
+  changeInputAction,
+  addItemAction,
+  deletItemAction,
+} from "@/store/actionCreators";
+
+import TodoListUi from "./TodoListUi";
 
 interface stateType {
   inputValue: string;
@@ -10,12 +16,12 @@ interface stateType {
 class TodoList extends Component<props, stateType> {
   constructor(props: any) {
     super(props);
-    this.state = TodoListStore.getState();
-    TodoListStore.subscribe(this.TodoListStoreChange); //订阅Redux的状态
+    this.state = Store.getState();
+    Store.subscribe(this.TodoListStoreChange); //订阅Redux的状态
   }
 
   TodoListStoreChange = () => {
-    const data = TodoListStore.getState();
+    const data = Store.getState();
     this.setState(data);
   };
 
@@ -23,34 +29,32 @@ class TodoList extends Component<props, stateType> {
     // this.setState({
     //   inputValue: event.target.value,
     // });
-    const action = {
-      type: "change_input_value",
-      value: event.target.value,
-    };
-    TodoListStore.dispatch(action);
+
+    // const action = {
+    //   type: CHANGE_INPUT,
+    //   value: event.target.value,
+    // };
+    Store.dispatch(changeInputAction(event.target.value));
+  };
+
+  addListItem = () => {
+    Store.dispatch(addItemAction());
+  };
+
+  deletKListItem = (index: number) => {
+    Store.dispatch(deletItemAction(index));
   };
 
   render() {
     const { list, inputValue } = this.state;
     return (
-      <div>
-        <Input
-          placeholder="placeholder"
-          value={inputValue}
-          onChange={this.changeInputValue}
-          style={{ width: "250px", marginRight: "10px" }}
-        />
-        {<Button type="primary">增加</Button>}
-        <div style={{ margin: "10px", width: "300px" }}>
-          <List
-            bordered
-            dataSource={list}
-            renderItem={(item) => {
-              return <List.Item>{item}</List.Item>;
-            }}
-          ></List>
-        </div>
-      </div>
+      <TodoListUi
+        inputValue={inputValue}
+        list={list}
+        changeInputValue={this.changeInputValue}
+        addListItem={this.addListItem}
+        deletKListItem={this.deletKListItem}
+      />
     );
   }
 }
