@@ -4,6 +4,7 @@ import {
   changeInputAction,
   addItemAction,
   deletItemAction,
+  getTodoList,
 } from "@/store/actionCreators";
 
 import TodoListUi from "./TodoListUi";
@@ -18,6 +19,11 @@ class TodoList extends Component<props, stateType> {
     super(props);
     this.state = Store.getState();
     Store.subscribe(this.TodoListStoreChange); //订阅Redux的状态
+  }
+
+  componentDidMount() {
+    const action = getTodoList();
+    Store.dispatch(action);
   }
 
   TodoListStoreChange = () => {

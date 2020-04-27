@@ -1,4 +1,5 @@
-import { CHANGE_INPUT, ADD_ITEM, DELET_ITEM } from "./actionType";
+import { CHANGE_INPUT, ADD_ITEM, DELET_ITEM, GET_LIST } from "./actionType";
+import axios from "axios";
 
 export const changeInputAction = (value: any) => {
   const action = {
@@ -16,9 +17,28 @@ export const addItemAction = () => {
 };
 
 export const deletItemAction = (index: number) => {
-  const action = {
+  return {
     type: DELET_ITEM,
     index,
   };
-  return action;
+};
+
+export const getListAction = (data: any) => {
+  return {
+    type: GET_LIST,
+    data,
+  };
+};
+
+export const getTodoList = () => {
+  return (dispatch: any) => {
+    axios
+      .get(
+        "https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList",
+      )
+      .then((res) => {
+        const data = res.data;
+        dispatch(getListAction(data));
+      });
+  };
 };
